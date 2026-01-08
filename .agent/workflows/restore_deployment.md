@@ -1,16 +1,9 @@
 ---
-description: How to restore GitHub Actions deployment
+description: How to enable GitHub Actions deployment
 ---
 
-# Restore GitHub Actions Deployment
+# Enable GitHub Actions Deployment
 
-If deployment is broken or reverted to "Deploy from branch":
-
-1.  **Check Workflow File**: Ensure `.github/workflows/deploy.yml` exists and is valid.
-2.  **Browser - Open Pages Settings**: Go to `https://github.com/travisforcolorado/HackTrrinidadForward/settings/pages`.
-3.  **Browser - Change Source**:
-    -   Locate "Build and deployment" > "Source".
-    -   Change it from "Deploy from a branch" to "GitHub Actions".
-4.  **Browser - Verify Actions**:
-    -   Go to the "Actions" tab.
-    -   Trigger the "Deploy to GitHub Pages" workflow if it doesn't run automatically.
+1.  **Open Settings**: Go to Repository **Settings** > **Pages**.
+2.  **Set Source**: Change "Build and deployment" > "Source" to **GitHub Actions**.
+3.  **Verify**: Ensure `.github/workflows/deploy.yml` exists. Push to `main` to deploy.
