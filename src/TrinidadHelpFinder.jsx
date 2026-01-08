@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from "react";
+import QRCode from "react-qr-code";
 
 const CATEGORIES = [
   { key: "Health", label: "Health" },
@@ -448,6 +449,149 @@ const RESOURCES = [
     hours: "Call for hours",
     notes: "Gender‑affirming care for youth (regional).",
     tags: []
+  },
+  {
+    type: "Primary",
+    category: "Health",
+    name: "Diane Buscarello, LPC",
+    address: "Trinidad, CO",
+    phone: "",
+    website: "https://www.7cups.com/",
+    hours: "Call for appointment",
+    notes: "Counseling for family stress, trauma, PTSD, and relationships.",
+    tags: ["mental-health"]
+  },
+  {
+    type: "Primary",
+    category: "Health",
+    name: "Colorado Crisis Services (Statewide)",
+    address: "",
+    phone: "1-844-493-8255",
+    website: "https://coloradocrisisservices.org/",
+    hours: "24/7",
+    notes: "Immediate crisis support. Text 'TALK' to 38255.",
+    tags: ["mental-health"]
+  },
+  {
+    type: "Primary",
+    category: "Food",
+    name: "Compassion Food Bank (Trinidad)",
+    address: "Trinidad, CO",
+    phone: "",
+    website: "https://foodpantries.org/",
+    hours: "4th Sat 10a–1:30p",
+    notes: "Food assistance.",
+    tags: []
+  },
+  {
+    type: "Secondary",
+    category: "Health",
+    name: "Spanish Peaks Mental Health Center",
+    address: "926 Russell Ave, Walsenburg, CO 81089",
+    phone: "719-738-2386",
+    website: "https://www.spmhc.org/",
+    hours: "Call for hours",
+    notes: "Outpatient/inpatient services, therapy, dual diagnosis.",
+    tags: ["mental-health"]
+  },
+  {
+    type: "Secondary",
+    category: "Health",
+    name: "Health Solutions – Walsenburg",
+    address: "926 Russell Ave, Walsenburg, CO 81089",
+    phone: "719-545-2746",
+    website: "https://www.health.solutions/",
+    hours: "Call for hours; 24/7 crisis",
+    notes: "Mental health crisis intervention & substance abuse treatment.",
+    tags: ["mental-health"]
+  },
+  {
+    type: "Secondary",
+    category: "Health",
+    name: "Pinwheel Healing Center",
+    address: "186 Hospital Dr, Raton, NM 87740",
+    phone: "505-636-6100",
+    website: "https://pinwheelhealing.com/",
+    hours: "Call for hours",
+    notes: "Counseling, PTSD/anxiety treatment, addiction treatment.",
+    tags: ["mental-health"]
+  },
+  {
+    type: "Secondary",
+    category: "Health",
+    name: "Tri County Community Services (Raton)",
+    address: "220 4th Ave, Raton, NM 87740",
+    phone: "575-445-2754",
+    website: "https://www.tccservices.org/",
+    hours: "Call for hours",
+    notes: "Therapy, medication management, crisis intervention.",
+    tags: ["mental-health"]
+  },
+  {
+    type: "Secondary",
+    category: "Health",
+    name: "Health Solutions Crisis Center (Pueblo)",
+    address: "1310 Chinook Ln, Pueblo, CO 81001",
+    phone: "719-545-2746",
+    website: "https://www.health.solutions/",
+    hours: "24/7 Walk-in",
+    notes: "Immediate mental health crisis help for all ages.",
+    tags: ["mental-health"]
+  },
+  {
+    type: "Secondary",
+    category: "Food",
+    name: "Walsenburg WIC Clinic",
+    address: "119 E Fifth St, Walsenburg, CO 81089",
+    phone: "719-738-2650",
+    website: "https://www.coloradowic.gov/",
+    hours: "Mon–Thu 9a–3p",
+    notes: "Nutrition for women/infants/children.",
+    tags: ["women", "wic"]
+  },
+  {
+    type: "Secondary",
+    category: "Food",
+    name: "Dorcas Circle Food Pantry",
+    address: "911 Main St, Walsenburg, CO 81089",
+    phone: "719-738-2291",
+    website: "",
+    hours: "Tue/Thu (Call)",
+    notes: "Food assistance.",
+    tags: []
+  },
+  {
+    type: "Secondary",
+    category: "Food",
+    name: "Raton Hunger Pantry",
+    address: "430 N 2nd St, Raton, NM 87740",
+    phone: "505-652-6769",
+    website: "",
+    hours: "2nd/4th Sat 11a–1p",
+    notes: "Food distribution.",
+    tags: []
+  },
+  {
+    type: "Secondary",
+    category: "Food",
+    name: "Colfax County WIC (Raton)",
+    address: "226 E 4th Ave, Raton, NM 87740",
+    phone: "575-445-3601",
+    website: "https://www.nmwic.org/",
+    hours: "Mon–Fri 8a–5p",
+    notes: "WIC services for families.",
+    tags: ["women", "wic"]
+  },
+  {
+    type: "Secondary",
+    category: "Food",
+    name: "Pueblo WIC Clinic",
+    address: "Pueblo, CO (Multiple locations)",
+    phone: "719-583-4392",
+    website: "https://county.pueblo.org/wic",
+    hours: "Call for hours",
+    notes: "Nutrition support for women/children.",
+    tags: ["women", "wic"]
   }
 ];
 
@@ -459,6 +603,7 @@ function TrinidadHelpFinder() {
   const [fontPct, setFontPct] = useState(115);
   const [dentalOnly, setDentalOnly] = useState(false);
   const [womenOnly, setWomenOnly] = useState(false);
+  const [mentalHealthOnly, setMentalHealthOnly] = useState(false);
 
   const data = useMemo(() => {
     return RESOURCES
@@ -479,7 +624,9 @@ function TrinidadHelpFinder() {
           !womenOnly ||
           (r.tags || []).includes("women") ||
           hay.includes("women");
-        return matchesQ && matchesDental && matchesWomen;
+        const matchesMental =
+          !mentalHealthOnly || (r.tags || []).includes("mental-health");
+        return matchesQ && matchesDental && matchesWomen && matchesMental;
       })
       .sort((a, b) => {
         if (!womenOnly) return 0;
@@ -487,7 +634,11 @@ function TrinidadHelpFinder() {
         const bw = (b.tags || []).includes("women") ? 1 : 0;
         return bw - aw;
       });
-  }, [which, cat, q, dentalOnly, womenOnly]);
+  }, [which, cat, q, dentalOnly, womenOnly, mentalHealthOnly]);
+
+  const handlePrint = () => {
+    window.print();
+  };
 
   const incFont = () => setFontPct((p) => Math.min(170, p + 10));
   const decFont = () => setFontPct((p) => Math.max(100, p - 10));
@@ -498,6 +649,20 @@ function TrinidadHelpFinder() {
       className={`${hc ? "bg-black text-white" : "bg-white text-gray-900"}`}
       style={{ fontSize: `${fontPct}%` }}
     >
+      <style>
+        {`
+        @media print {
+          @page { margin: 0.5cm; }
+          body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+          header, footer, .no-print { display: none !important; }
+          .print-only { display: block !important; }
+          article { break-inside: avoid; border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; }
+        }
+        .print-only { display: none; }
+        `}
+      </style>
+
+      {/* Skip Links */}
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-yellow-300 focus:text-black focus:px-3 focus:py-2 focus:rounded"
@@ -512,74 +677,95 @@ function TrinidadHelpFinder() {
       </a>
 
       <header
-        className={`${hc ? "bg-yellow-500 text-black" : "bg-red-600 text-white"} p-4 shadow`}
+        className={`${hc ? "bg-yellow-500 text-black" : "bg-teal-600 text-white"} p-4 shadow no-print`}
         role="banner"
       >
         <div className="max-w-5xl mx-auto flex items-center justify-between gap-3">
-          <h1 className="text-2xl md:text-3xl font-bold tracking-tight">
-            Trinidad Help Finder
-          </h1>
-          <div
-            className="flex items-center gap-2"
-            aria-label="Accessibility settings"
-          >
-            <div
-              className="flex items-center gap-1"
-              role="group"
-              aria-label="Text size"
+          <div className="flex items-center gap-3">
+            <img src="./logo.png" alt="Trinidad Area Resource Finder Logo" className="h-12 w-12 md:h-16 md:w-16 rounded-full bg-white p-1" />
+            <h1 className="text-2xl md:text-3xl font-bold tracking-tight">
+              Trinidad Help Finder
+            </h1>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <button
+              onClick={handlePrint}
+              className="hidden md:inline-block bg-white text-teal-700 px-3 py-1 rounded font-bold hover:bg-gray-100"
             >
-              <button
-                onClick={decFont}
-                className={`${
-                  hc
-                    ? "bg-black text-white border-white"
-                    : "bg-white text-red-700 border-red-700"
-                } border rounded px-2 py-1 text-lg font-bold focus:outline-none focus-visible:ring-4 focus-visible:ring-offset-2 ${
-                  hc ? "focus-visible:ring-yellow-300" : "focus-visible:ring-red-300"
-                }`}
-                aria-label="Decrease text size"
+              Print / Save PDF
+            </button>
+
+            <div
+              className="flex items-center gap-2"
+              aria-label="Accessibility settings"
+            >
+              <div
+                className="flex items-center gap-1"
+                role="group"
+                aria-label="Text size"
               >
-                A−
-              </button>
-              <button
-                onClick={incFont}
-                className={`${
-                  hc
-                    ? "bg-black text-white border-white"
-                    : "bg-white text-red-700 border-red-700"
-                } border rounded px-2 py-1 text-lg font-bold focus:outline-none focus-visible:ring-4 focus-visible:ring-offset-2 ${
-                  hc ? "focus-visible:ring-yellow-300" : "focus-visible:ring-red-300"
-                }`}
-                aria-label="Increase text size"
-              >
-                A+
-              </button>
+                <button
+                  onClick={decFont}
+                  className={`${hc
+                      ? "bg-black text-white border-white"
+                      : "bg-white text-teal-700 border-teal-700"
+                    } border rounded px-2 py-1 text-lg font-bold focus:outline-none focus-visible:ring-4 focus-visible:ring-offset-2 ${hc ? "focus-visible:ring-yellow-300" : "focus-visible:ring-teal-300"
+                    }`}
+                  aria-label="Decrease text size"
+                >
+                  A−
+                </button>
+                <button
+                  onClick={incFont}
+                  className={`${hc
+                      ? "bg-black text-white border-white"
+                      : "bg-white text-teal-700 border-teal-700"
+                    } border rounded px-2 py-1 text-lg font-bold focus:outline-none focus-visible:ring-4 focus-visible:ring-offset-2 ${hc ? "focus-visible:ring-yellow-300" : "focus-visible:ring-teal-300"
+                    }`}
+                  aria-label="Increase text size"
+                >
+                  A+
+                </button>
+              </div>
+              <label className="inline-flex items-center gap-2 text-sm md:text-base font-semibold">
+                <input
+                  type="checkbox"
+                  className="h-5 w-5"
+                  checked={hc}
+                  onChange={(e) => setHc(e.target.checked)}
+                  aria-label="High contrast mode"
+                />
+                High contrast
+              </label>
             </div>
-            <label className="inline-flex items-center gap-2 text-sm md:text-base font-semibold">
-              <input
-                type="checkbox"
-                className="h-5 w-5"
-                checked={hc}
-                onChange={(e) => setHc(e.target.checked)}
-                aria-label="High contrast mode"
-              />
-              High contrast
-            </label>
           </div>
         </div>
-        <div className="max-w-5xl mx-auto mt-3 text-sm md:text-base">
+        <div className="max-w-5xl mx-auto mt-3 text-sm md:text-base flex justify-between items-center">
           <div
-            className={`${
-              hc ? "bg-white text-black" : "bg-white text-red-700"
-            } rounded-lg px-3 py-2 font-semibold`}
+            className={`${hc ? "bg-white text-black" : "bg-white text-teal-700"
+              } rounded-lg px-3 py-2 font-semibold`}
           >
             Emergency? Call <a className="underline" href="tel:911">911</a>
           </div>
+          {/* Mobile Print Button */}
+          <button
+            onClick={handlePrint}
+            className="md:hidden bg-white text-teal-700 px-3 py-2 rounded font-bold text-sm"
+          >
+            Print
+          </button>
         </div>
       </header>
 
+      {/* Print Header */}
+      <div className="print-only text-center mb-5">
+        <h1 className="text-3xl font-bold">Trinidad Help Finder Resources</h1>
+        <p>Resources for Trinidad, Walsenburg, Raton, and Pueblo.</p>
+      </div>
+
       <main id="main" className="max-w-5xl mx-auto p-4" role="main">
-        <fieldset className="mb-3" aria-label="Location scope">
+        <fieldset className="mb-3 no-print" aria-label="Location scope">
           <legend className="sr-only">Choose Trinidad or Regional resources</legend>
           <div
             className="flex gap-2"
@@ -589,17 +775,15 @@ function TrinidadHelpFinder() {
             {["Primary", "Secondary"].map((t) => (
               <label
                 key={t}
-                className={`flex-1 rounded-2xl px-4 py-3 text-xl font-bold border-2 cursor-pointer ${
-                  which === t
+                className={`flex-1 rounded-2xl px-4 py-3 text-xl font-bold border-2 cursor-pointer ${which === t
                     ? hc
                       ? "bg-yellow-500 text-black border-yellow-500"
-                      : "bg-red-600 text-white border-red-600"
+                      : "bg-teal-600 text-white border-teal-600"
                     : hc
-                    ? "bg-black text-white border-white"
-                    : "bg-white text-red-700 border-red-600"
-                } focus-within:outline-none focus-within:ring-4 ${
-                  hc ? "focus-within:ring-yellow-300" : "focus-within:ring-red-300"
-                }`}
+                      ? "bg-black text-white border-white"
+                      : "bg-white text-teal-700 border-teal-600"
+                  } focus-within:outline-none focus-within:ring-4 ${hc ? "focus-within:ring-yellow-300" : "focus-within:ring-teal-300"
+                  }`}
               >
                 <input
                   type="radio"
@@ -621,7 +805,7 @@ function TrinidadHelpFinder() {
         </fieldset>
 
         <div
-          className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-2"
+          className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-2 no-print"
           role="group"
           aria-label="Filter by category"
         >
@@ -634,17 +818,17 @@ function TrinidadHelpFinder() {
                 if (next !== "Health") {
                   setDentalOnly(false);
                   setWomenOnly(false);
+                  setMentalHealthOnly(false);
                 }
               }}
-              className={`rounded-3xl h-24 md:h-28 border-2 flex items-center justify-center text-2xl font-extrabold tracking-wide focus:outline-none focus-visible:ring-4 focus-visible:ring-offset-2 ${
-                cat === c.key
+              className={`rounded-3xl h-24 md:h-28 border-2 flex items-center justify-center text-2xl font-extrabold tracking-wide focus:outline-none focus-visible:ring-4 focus-visible:ring-offset-2 ${cat === c.key
                   ? hc
                     ? "bg-yellow-500 text-black border-yellow-500 focus-visible:ring-yellow-300"
-                    : "bg-red-600 text-white border-red-600 focus-visible:ring-red-300"
+                    : "bg-teal-600 text-white border-teal-600 focus-visible:ring-teal-300"
                   : hc
-                  ? "bg-black text-white border-white focus-visible:ring-yellow-300"
-                  : "bg-gray-100 border-gray-300 text-gray-900 focus-visible:ring-red-300"
-              }`}
+                    ? "bg-black text-white border-white focus-visible:ring-yellow-300"
+                    : "bg-gray-100 border-gray-300 text-gray-900 focus-visible:ring-teal-300"
+                }`}
               aria-pressed={cat === c.key}
               aria-label={
                 cat === c.key
@@ -660,7 +844,7 @@ function TrinidadHelpFinder() {
 
         {cat === "Health" && (
           <div
-            className="mb-4 flex flex-wrap items-center gap-6"
+            className="mb-4 flex flex-wrap items-center gap-6 no-print"
             role="group"
             aria-label="Health subfilters"
           >
@@ -684,10 +868,20 @@ function TrinidadHelpFinder() {
               />
               Women’s health
             </label>
+            <label className="inline-flex items-center gap-2 text-base md:text-lg font-semibold">
+              <input
+                type="checkbox"
+                className="h-5 w-5"
+                checked={mentalHealthOnly}
+                onChange={(e) => setMentalHealthOnly(e.target.checked)}
+                aria-label="Show mental health resources only"
+              />
+              Mental Health
+            </label>
           </div>
         )}
 
-        <div className="mb-4">
+        <div className="mb-4 no-print">
           <label htmlFor="search" className="block text-lg font-bold mb-1">
             Search
           </label>
@@ -696,11 +890,10 @@ function TrinidadHelpFinder() {
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Type a name or place (try: women, mammogram, OB‑GYN, dental, food)"
-            className={`w-full rounded-2xl border-2 px-4 py-3 text-xl focus:outline-none focus-visible:ring-4 focus-visible:ring-offset-2 ${
-              hc
+            className={`w-full rounded-2xl border-2 px-4 py-3 text-xl focus:outline-none focus-visible:ring-4 focus-visible:ring-offset-2 ${hc
                 ? "bg-black border-white text-white focus-visible:ring-yellow-300"
-                : "border-gray-300 focus-visible:ring-red-300"
-            }`}
+                : "border-gray-300 focus-visible:ring-teal-300"
+              }`}
             aria-describedby="searchHelp"
           />
           <div id="searchHelp" className="mt-1 text-base opacity-80">
@@ -724,9 +917,8 @@ function TrinidadHelpFinder() {
             return (
               <li key={i} role="listitem">
                 <article
-                  className={`rounded-3xl border shadow-sm p-4 md:p-5 ${
-                    hc ? "border-white" : "border-gray-200"
-                  }`}
+                  className={`rounded-3xl border shadow-sm p-4 md:p-5 ${hc ? "border-white" : "border-gray-200"
+                    }`}
                   role="region"
                   aria-labelledby={headingId}
                   aria-describedby={notesId}
@@ -740,20 +932,18 @@ function TrinidadHelpFinder() {
                         {r.name}
                       </h2>
                       <div
-                        className={`mt-1 text-base md:text-lg font-semibold ${
-                          hc ? "text-yellow-300" : "text-red-700"
-                        }`}
+                        className={`mt-1 text-base md:text-lg font-semibold ${hc ? "text-yellow-300" : "text-teal-700"
+                          }`}
                       >
                         {r.category} • {" "}
                         {r.type === "Primary" ? "Trinidad" : "Regional"}
                       </div>
                     </div>
                     <div
-                      className={`shrink-0 text-sm md:text-base font-bold px-3 py-1 rounded-full ${
-                        hc
+                      className={`shrink-0 text-sm md:text-base font-bold px-3 py-1 rounded-full ${hc
                           ? "bg-white text-black border border-black"
                           : "bg-gray-100 border border-gray-300"
-                      }`}
+                        }`}
                     >
                       Easy Read
                     </div>
@@ -799,16 +989,21 @@ function TrinidadHelpFinder() {
                           <span>{r.hours}</span>
                         </div>
                       )}
+                      {/* Tags for print view or screen readers */}
+                      {r.tags && r.tags.length > 0 && (
+                        <div className="mt-1 text-sm opacity-75 print-only">
+                          Tags: {r.tags.join(", ")}
+                        </div>
+                      )}
                     </div>
                     <div>
                       {r.notes && (
                         <p
                           id={notesId}
-                          className={`${
-                            hc
+                          className={`${hc
                               ? "bg-black text-white border border-white"
                               : "bg-gray-50"
-                          } rounded-2xl p-3 text-lg leading-relaxed`}
+                            } rounded-2xl p-3 text-lg leading-relaxed`}
                         >
                           {r.notes}
                         </p>
@@ -816,19 +1011,17 @@ function TrinidadHelpFinder() {
                     </div>
                   </div>
 
-                  <div className="mt-4 flex flex-wrap gap-3">
+                  <div className="mt-4 flex flex-wrap gap-3 no-print">
                     {r.phone && (
                       <a
                         href={`tel:${r.phone.replace(/[^\d+]/g, "")}`}
-                        className={`${
-                          hc
+                        className={`${hc
                             ? "bg-yellow-500 text-black"
-                            : "bg-green-600 text-white"
-                        } rounded-2xl px-5 py-3 text-xl font-bold focus:outline-none focus-visible:ring-4 focus-visible:ring-offset-2 ${
-                          hc
+                            : "bg-teal-600 text-white"
+                          } rounded-2xl px-5 py-3 text-xl font-bold focus:outline-none focus-visible:ring-4 focus-visible:ring-offset-2 ${hc
                             ? "focus-visible:ring-yellow-300"
-                            : "focus-visible:ring-green-300"
-                        }`}
+                            : "focus-visible:ring-teal-300"
+                          }`}
                         aria-label={`Call ${r.name}`}
                       >
                         Call
@@ -839,15 +1032,13 @@ function TrinidadHelpFinder() {
                         href={mapLink(r.address)}
                         target="_blank"
                         rel="noreferrer"
-                        className={`${
-                          hc
+                        className={`${hc
                             ? "bg-yellow-500 text-black"
                             : "bg-blue-600 text-white"
-                        } rounded-2xl px-5 py-3 text-xl font-bold focus:outline-none focus-visible:ring-4 focus-visible:ring-offset-2 ${
-                          hc
+                          } rounded-2xl px-5 py-3 text-xl font-bold focus:outline-none focus-visible:ring-4 focus-visible:ring-offset-2 ${hc
                             ? "focus-visible:ring-yellow-300"
                             : "focus-visible:ring-blue-300"
-                        }`}
+                          }`}
                         aria-label={`Get directions to ${r.name}`}
                       >
                         Directions
@@ -858,15 +1049,13 @@ function TrinidadHelpFinder() {
                         href={r.website}
                         target="_blank"
                         rel="noreferrer"
-                        className={`${
-                          hc
+                        className={`${hc
                             ? "bg-yellow-500 text-black"
                             : "bg-gray-800 text-white"
-                        } rounded-2xl px-5 py-3 text-xl font-bold focus:outline-none focus-visible:ring-4 focus-visible:ring-offset-2 ${
-                          hc
+                          } rounded-2xl px-5 py-3 text-xl font-bold focus:outline-none focus-visible:ring-4 focus-visible:ring-offset-2 ${hc
                             ? "focus-visible:ring-yellow-300"
                             : "focus-visible:ring-gray-400"
-                        }`}
+                          }`}
                         aria-label={`Open website for ${r.name}`}
                       >
                         Website
@@ -879,7 +1068,16 @@ function TrinidadHelpFinder() {
           })}
         </ul>
 
-        <div className="mt-8 text-base md:text-lg opacity-80">
+        {/* QR Code Section */}
+        <div className="mt-12 p-6 bg-white rounded-3xl border border-gray-200 shadow text-center no-print">
+          <h2 className="text-2xl font-bold mb-4">Share this Resource</h2>
+          <p className="mb-4 text-lg">Scan this QR code to share or save.</p>
+          <div className="inline-block p-4 bg-white rounded-xl shadow-lg">
+            <QRCode value={window.location.href} size={180} />
+          </div>
+        </div>
+
+        <div className="mt-8 text-base md:text-lg opacity-80 no-print">
           Please call to confirm hours. This tool lists help for Trinidad first.
           Regional options include nearby cities (Pueblo, Walsenburg, Raton,
           Colorado Springs).
