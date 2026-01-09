@@ -11,6 +11,7 @@ import { Ludlow } from './components/Ludlow';
 import { PinonCanyon } from './components/PinonCanyon';
 import { RanchingHeritage } from './components/RanchingHeritage';
 import { SimpsonsRest } from './components/SimpsonsRest';
+import { GenericStory } from './components/GenericStory';
 
 const app = document.querySelector('#app');
 
@@ -76,7 +77,12 @@ const router = () => {
       break;
 
     default:
-      Home(contentDiv);
+      if (hash.startsWith('#story/')) {
+        const storyId = hash.replace('#story/', '');
+        GenericStory(contentDiv, storyId);
+      } else {
+        Home(contentDiv);
+      }
   }
 };
 
