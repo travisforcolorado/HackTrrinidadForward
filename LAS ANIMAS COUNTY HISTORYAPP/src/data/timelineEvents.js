@@ -2,22 +2,53 @@ export const timelineEvents = [
     {
         year: '1821',
         title: 'Santa Fe Trail Opens',
-        description: 'The Santa Fe Trail is established, passing through what would become Las Animas County, bringing trade and travelers to the region.',
-        icon: 'road',
-        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Santa_Fe_wagon_trail_ruts%2C_Ford_County%2C_Kansas.png/640px-Santa_Fe_wagon_trail_ruts%2C_Ford_County%2C_Kansas.png',
-        imageCredit: 'Public Domain / Wikimedia Commons'
+        description: 'The opening of the Santa Fe Trail puts the Purgatoire Valley on the map as a crucial stopping point for traders and travelers.',
+        image: '/assets/images/historic_placeholder.png',
+        imageCredit: 'Public Domain'
+    },
+    {
+        year: '1861',
+        title: 'Territory of Colorado',
+        description: 'Colorado Territory is organized, setting the stage for future development and statehood.'
     },
     {
         year: '1866',
         title: 'County Established',
-        description: 'Las Animas County is officially created by the Colorado Territorial Legislature, taking its name from the Purgatoire River (El Río de las Ánimas Perdidas en Purgatorio).',
-        icon: 'flag'
+        description: 'Las Animas County is officially established, making it one of the largest counties in Colorado.',
+        image: '/assets/images/historic_placeholder.png'
+    },
+    {
+        year: '1876',
+        title: 'Colorado Statehood',
+        description: 'Colorado becomes the 38th state, known as the Centennial State.',
+        image: '/assets/images/historic_placeholder.png'
     },
     {
         year: '1878',
         title: 'Railroad Arrives',
-        description: 'The Atchison, Topeka and Santa Fe Railway reaches Trinidad, cementing its status as a commercial hub.',
-        icon: 'train'
+        description: 'The AT&SF Railroad reaches Trinidad, cementing its status as a major commercial hub.',
+        image: '/assets/images/first_national_bank.png'
+    },
+    {
+        year: '1882',
+        title: 'Coal Boom',
+        description: 'The coal mining industry explodes, bringing thousands of immigrants to the region to work in the mines.',
+        image: '/assets/images/historic_placeholder.png'
+    },
+    {
+        year: '1913',
+        title: 'The Spark: Walsenburg',
+        description: 'Tensions rise as miners strike for better conditions. The killing of workers in Walsenburg ignites the coalfield wars.',
+        image: '/assets/images/historic_placeholder.png'
+    },
+    {
+        year: '1914',
+        title: 'Ludlow Massacre',
+        description: 'On April 20, the National Guard attacks a tent colony of striking miners. The resulting massacre becomes a watershed moment in American labor history.',
+        image: '/assets/images/ludlow_tents.png',
+        imageCredit: 'Public Domain',
+        link: '#ludlow',
+        linkText: 'Read about Ludlow'
     },
     {
         year: '1882',

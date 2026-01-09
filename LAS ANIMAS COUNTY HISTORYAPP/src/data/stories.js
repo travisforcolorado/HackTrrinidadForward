@@ -8,7 +8,7 @@ export const stories = [
     },
     {
         title: 'Bat Masterson',
-        image: 'https://upload.wikimedia.org/wikipedia/commons/e/ea/Bat_Masterson.JPG',
+        image: '/assets/images/black_jacks.png',
         excerpt: 'The famous lawman served as Marshal in Trinidad during the 1880s, keeping the peace in a rough frontier town.',
         imageCredit: 'Public Domain / Wikimedia Commons'
     },

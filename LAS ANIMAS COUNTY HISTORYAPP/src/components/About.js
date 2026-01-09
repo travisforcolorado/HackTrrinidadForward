@@ -18,7 +18,7 @@ export const About = (target) => {
           On <strong>February 9, 1866</strong>, the Territorial Legislature officially separated Las Animas from Huerfano, creating a new jurisdiction to serve the growing population of the Purgatoire Valley. At the time of its creation, it was the largest county in the territory.
         </p>
         <div class="glass-card mb-lg" style="text-align: center;">
-             <img src="/assets/images/las_animas_huerfano_map.png" alt="Map showing Las Animas separating from Huerfano" style="max-width: 100%; border-radius: 4px; border: 1px solid var(--border-color);">
+             <img src="/assets/images/historic_placeholder.png" alt="Map showing Las Animas separating from Huerfano" style="max-width: 100%; border-radius: 4px; border: 1px solid var(--border-color);">
              <p style="font-size: 0.9rem; margin-top: 0.5rem; color: var(--text-secondary);">Map Verification: Separation of Las Animas from Huerfano (1866)</p>
         </div>
 
