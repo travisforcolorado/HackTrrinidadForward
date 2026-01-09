@@ -1,0 +1,53 @@
+:root {
+  /* Colors - Southwest/Historical Theme */
+  --color-turquoise: #40E0D0;
+  --color-teal: #008080;
+  --color-dark-teal: #004d4d;
+  --color-terracotta: #E2725B;
+  --color-sand: #F4A460;
+  --color-paper: #FDFbf7;
+  --color-parchment: #f0e6d2;
+  --color-charcoal: #333333;
+  --color-dark-brown: #4A3728;
+  --color-white: #ffffff;
+  
+  /* Semantic Colors */
+  --bg-primary: var(--color-paper);
+  --bg-secondary: var(--color-parchment);
+  --text-primary: var(--color-charcoal);
+  --text-secondary: var(--color-dark-brown);
+  --accent-primary: var(--color-teal);
+  --accent-secondary: var(--color-terracotta);
+  --border-color: #dccbb1;
+
+  /* Typography */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-accent: 'Outfit', sans-serif;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --common-padding: 0 1rem;
+  --container-width: 1200px;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --text-primary: #f0e6d2;
+  --text-secondary: #dccbb1;
+  --border-color: #444;
+}
