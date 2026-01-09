@@ -68,7 +68,9 @@ export const timelineEvents = [
         description: 'In neighboring Huerfano County, the brutal vigilante killing of five Italian miners became an international incident. This tragedy is widely viewed as the "spark that lit the fuse" for the impending Coalfield Wars, uniting the immigrant labor force against injustice.',
         icon: 'fire-flame-curved',
         image: 'https://upload.wikimedia.org/wikipedia/commons/4/47/Miners_Walsenburg_Colorado.jpg',
-        imageCredit: 'Public Domain / Wikimedia Commons'
+        imageCredit: 'Public Domain / Wikimedia Commons',
+        link: '#story/walsenburg-massacre',
+        linkText: 'Read Full Story'
     },
     {
         year: '1914',
@@ -92,7 +94,9 @@ export const timelineEvents = [
         description: 'The Prohibition era brings violence to the region. Special Agent Dale F. Kearney is ambushed and killed in Aguilar. Months later, Agent Ray Sutton vanishes while investigating bootleggers between Raton and Trinidad, never to be found.',
         icon: 'user-secret',
         image: '/assets/images/prohibition_agents.png',
-        imageCredit: 'Historical Recreation / AI Generated'
+        imageCredit: 'Historical Recreation / AI Generated',
+        link: '#story/prohibition-agents',
+        linkText: 'Read Mystery'
     },
     {
         year: '1943',
@@ -100,7 +104,9 @@ export const timelineEvents = [
         description: 'Camp Trinidad houses thousands of German POWs, including Afrika Korps officers. In a daring event, German officers escape with the help of three Japanese-American women from the Amache internment camp.',
         icon: 'person-drowning',
         image: '/assets/images/simpsons_rest_postcard.png',
-        imageCredit: 'Vintage Postcard Style / AI Generated'
+        imageCredit: 'Vintage Postcard Style / AI Generated',
+        link: '#story/camp-trinidad',
+        linkText: 'Read Escape Story'
     },
     {
         year: '1866',
