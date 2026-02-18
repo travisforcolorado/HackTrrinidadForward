@@ -131,7 +131,7 @@ function TrinidadHelpFinder() {
               className="h-10 w-10 md:h-16 md:w-16 rounded-full bg-white p-1"
             />
             <h1 className="text-xl md:text-3xl font-bold tracking-tight">
-              Trinidad Help Finder
+              Trinidad Area Resource Finder
             </h1>
           </div>
           <div className="flex items-center gap-3">
@@ -499,7 +499,7 @@ function TrinidadHelpFinder() {
           }`}
       >
         <div className="max-w-4xl mx-auto px-4">
-          <p className="font-semibold text-lg">Trinidad Help Finder</p>
+          <p className="font-semibold text-lg">Trinidad Area Resource Finder</p>
           <p className="mt-2 text-sm opacity-80">
             Last Updated: February 2026
           </p>
