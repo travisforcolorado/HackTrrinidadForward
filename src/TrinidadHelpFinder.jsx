@@ -506,7 +506,7 @@ function TrinidadHelpFinder() {
           <p className="mt-2 text-sm">
             Questions? Errors?{" "}
             <a
-              href="mailto:contact@trinidadhelpfinder.com"
+              href="mailto:travisforcolorado@gmail.com"
               className={`underline ${hc ? "text-yellow-300" : "text-teal-600 hover:text-teal-800"
                 }`}
             >
