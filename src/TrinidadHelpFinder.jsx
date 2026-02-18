@@ -120,17 +120,17 @@ function TrinidadHelpFinder() {
 
       <header
         className={`${hc ? "bg-yellow-500 text-black" : "bg-teal-600 text-white"
-          } p-4 shadow no-print`}
+          } p-2 md:p-4 shadow no-print`}
         role="banner"
       >
-        <div className="max-w-5xl mx-auto flex items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
+        <div className="max-w-5xl mx-auto flex items-center justify-between gap-2 md:gap-3">
+          <div className="flex items-center gap-2 md:gap-3">
             <img
               src="./logo.png"
               alt="Trinidad Area Resource Finder Logo"
-              className="h-12 w-12 md:h-16 md:w-16 rounded-full bg-white p-1"
+              className="h-10 w-10 md:h-16 md:w-16 rounded-full bg-white p-1"
             />
-            <h1 className="text-2xl md:text-3xl font-bold tracking-tight">
+            <h1 className="text-xl md:text-3xl font-bold tracking-tight">
               Trinidad Help Finder
             </h1>
           </div>
@@ -138,8 +138,8 @@ function TrinidadHelpFinder() {
             <button
               onClick={() => setHc(!hc)}
               className={`px-3 py-1 rounded font-bold border-2 ${hc
-                  ? "bg-black text-yellow-300 border-black"
-                  : "bg-white text-teal-800 border-white"
+                ? "bg-black text-yellow-300 border-black"
+                : "bg-white text-teal-800 border-white"
                 }`}
               aria-pressed={hc}
             >
@@ -180,7 +180,7 @@ function TrinidadHelpFinder() {
         </div>
 
         <section
-          className={`mb-6 p-4 rounded-3xl border-2 ${hc ? "border-yellow-300" : "border-teal-100 bg-teal-50"
+          className={`hidden md:block mb-6 p-4 rounded-3xl border-2 ${hc ? "border-yellow-300" : "border-teal-100 bg-teal-50"
             } no-print`}
           aria-labelledby="share-heading"
         >
@@ -217,12 +217,12 @@ function TrinidadHelpFinder() {
               <label
                 key={t}
                 className={`flex-1 cursor-pointer rounded-2xl p-3 text-center text-lg font-bold border-2 transition-colors ${which === t
-                    ? hc
-                      ? "bg-yellow-500 text-black border-yellow-500"
-                      : "bg-teal-700 text-white border-teal-700"
-                    : hc
-                      ? "border-white text-white"
-                      : "bg-white text-gray-600 border-gray-300"
+                  ? hc
+                    ? "bg-yellow-500 text-black border-yellow-500"
+                    : "bg-teal-700 text-white border-teal-700"
+                  : hc
+                    ? "border-white text-white"
+                    : "bg-white text-gray-600 border-gray-300"
                   }`}
               >
                 <input
@@ -247,7 +247,7 @@ function TrinidadHelpFinder() {
         </fieldset>
 
         <div
-          className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-2 no-print"
+          className="grid grid-cols-3 md:grid-cols-4 gap-2 md:gap-3 mb-2 no-print"
           role="group"
           aria-label="Filter by category"
         >
@@ -264,12 +264,12 @@ function TrinidadHelpFinder() {
                 }
               }}
               className={`rounded-3xl h-24 md:h-28 border-2 flex flex-col items-center justify-center p-2 text-center transition-all focus:outline-none focus-visible:ring-4 focus-visible:ring-offset-2 ${cat === c.key
-                  ? hc
-                    ? "bg-yellow-500 text-black border-yellow-500 focus-visible:ring-yellow-300"
-                    : "bg-teal-600 text-white border-teal-600 focus-visible:ring-teal-300 scale-105 shadow-lg"
-                  : hc
-                    ? "bg-black text-white border-white focus-visible:ring-yellow-300"
-                    : "bg-gray-100 border-gray-300 text-gray-900 focus-visible:ring-teal-300 hover:bg-gray-200"
+                ? hc
+                  ? "bg-yellow-500 text-black border-yellow-500 focus-visible:ring-yellow-300"
+                  : "bg-teal-600 text-white border-teal-600 focus-visible:ring-teal-300 scale-105 shadow-lg"
+                : hc
+                  ? "bg-black text-white border-white focus-visible:ring-yellow-300"
+                  : "bg-gray-100 border-gray-300 text-gray-900 focus-visible:ring-teal-300 hover:bg-gray-200"
                 }`}
               aria-pressed={cat === c.key}
               aria-label={
@@ -342,8 +342,8 @@ function TrinidadHelpFinder() {
               onKeyDown={(e) => e.key === "Enter" && e.target.blur()}
               placeholder="Type a name or place..."
               className={`w-full rounded-2xl border-2 pl-4 pr-10 py-3 text-xl focus:outline-none focus-visible:ring-4 focus-visible:ring-offset-2 ${hc
-                  ? "bg-black border-white text-white focus-visible:ring-yellow-300"
-                  : "border-gray-300 focus-visible:ring-teal-300"
+                ? "bg-black border-white text-white focus-visible:ring-yellow-300"
+                : "border-gray-300 focus-visible:ring-teal-300"
                 }`}
               aria-describedby="searchHelp"
             />
@@ -505,6 +505,11 @@ function TrinidadHelpFinder() {
             >
               Contact Us
             </a>
+          </p>
+          <p className="mt-4 text-xs opacity-60">
+            Created to Help Trinidad by Travis Nelson and Sue Nesbitt
+            <br />
+            Thanks to Emergent Campus
           </p>
         </div>
       </footer>
