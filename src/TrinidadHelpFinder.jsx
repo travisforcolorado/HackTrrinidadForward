@@ -281,9 +281,11 @@ function TrinidadHelpFinder() {
                 {CAT_ICONS[c.key]}
               </span>
               <span
-                className={`${c.key === "Transportation" || c.key === "Employment"
-                  ? "text-base md:text-lg"
-                  : "text-lg md:text-xl"
+                className={`${c.key === "Transportation"
+                  ? "text-xs md:text-lg"
+                  : c.key === "Employment"
+                    ? "text-sm md:text-xl"
+                    : "text-lg md:text-xl"
                   } font-extrabold tracking-wide leading-tight`}
               >
                 {c.label}
