@@ -280,7 +280,12 @@ function TrinidadHelpFinder() {
               <span className="text-3xl mb-1" aria-hidden="true">
                 {CAT_ICONS[c.key]}
               </span>
-              <span className="text-lg md:text-xl font-extrabold tracking-wide leading-tight">
+              <span
+                className={`${c.key === "Transportation" || c.key === "Employment"
+                  ? "text-base md:text-lg"
+                  : "text-lg md:text-xl"
+                  } font-extrabold tracking-wide leading-tight`}
+              >
                 {c.label}
               </span>
             </button>
