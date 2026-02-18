@@ -9,4 +9,4 @@ npm install
 npm run dev
 ```
 
-The application is built with [Vite](https://vitejs.dev/) and React. Run `npm run build` to produce the static assets you can deploy to GitHub Pages.
+The application is built with [Vite](https://vitejs.dev/) and React. Run `npm run build` to produce the static assets you can deploy to GitHub Pages. See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed deployment instructions.
