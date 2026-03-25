@@ -111,6 +111,50 @@ export const RESOURCES = [
     {
         type: "Primary",
         category: "Health",
+        name: "Hometown Pharmacy & Medical",
+        address: "824 E Main St, Trinidad, CO 81082",
+        phone: "719-845-0069",
+        website: "https://www.htpcolorado.com/",
+        hours: "Mon-Fri 9a-6p; Sat 9a-1p; Sun closed",
+        notes: "Locally owned retail and compounding pharmacy with immunizations, medical equipment, and home delivery in Trinidad.",
+        tags: ["pharmacy"]
+    },
+    {
+        type: "Primary",
+        category: "Health",
+        name: "Safeway Pharmacy",
+        address: "457 W Main St, Trinidad, CO 81082",
+        phone: "719-846-3086",
+        website: "https://local.pharmacy.safeway.com/safeway/co/trinidad/457-w-main-st.html",
+        hours: "Mon-Fri 8a-1:30p, 2p-8p; Sat 9a-1:30p, 2p-6p; Sun 10a-1:30p, 2p-6p",
+        notes: "Prescription fills and transfers, vaccinations, medication review, safe drug disposal, and pet prescriptions.",
+        tags: ["pharmacy"]
+    },
+    {
+        type: "Primary",
+        category: "Health",
+        name: "Walmart Pharmacy",
+        address: "2921 Toupal Dr, Trinidad, CO 81082",
+        phone: "719-846-3358",
+        website: "https://www.walmart.com/store/962-trinidad-co",
+        hours: "Call or check store page for current pharmacy hours",
+        notes: "Retail pharmacy inside Trinidad Walmart Supercenter with prescription refills and immunizations.",
+        tags: ["pharmacy"]
+    },
+    {
+        type: "Primary",
+        category: "Health",
+        name: "Salud Family Health Pharmacy",
+        address: "911 Robinson Ave, Trinidad, CO 81082",
+        phone: "719-422-8800",
+        website: "https://www.saludclinic.org/trinidad",
+        hours: "Mon-Fri 8:30a-5p",
+        notes: "On-site pharmacy at the Trinidad Salud clinic. The local clinic page lists pharmacy hours; call the clinic for pharmacy help.",
+        tags: ["pharmacy"]
+    },
+    {
+        type: "Primary",
+        category: "Health",
         name: "Maternal Mental Health Hotline (24/7)",
         address: "",
         phone: "1-833-852-6262",

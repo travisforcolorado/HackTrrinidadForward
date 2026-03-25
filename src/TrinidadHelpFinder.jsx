@@ -380,7 +380,7 @@ function TrinidadHelpFinder() {
             )}
           </div>
           <div id="searchHelp" className="mt-1 text-base opacity-80">
-            Try: “dental”, “food”, “hospital”, or a street name.
+            Try: “pharmacy”, “dental”, “food”, “hospital”, or a street name.
           </div>
         </form>
 
@@ -501,7 +501,7 @@ function TrinidadHelpFinder() {
         <div className="max-w-4xl mx-auto px-4">
           <p className="font-semibold text-lg">Trinidad Area Resource Finder</p>
           <p className="mt-2 text-sm opacity-80">
-            Last Updated: February 2026
+            Last Updated: March 2026
           </p>
           <p className="mt-2 text-sm">
             Questions? Errors?{" "}
